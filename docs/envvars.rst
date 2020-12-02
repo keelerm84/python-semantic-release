@@ -69,6 +69,13 @@ usage.
 To generate a token go to https://github.com/settings/tokens
 and click on *Personal access token*.
 
+.. _env-gh_actor:
+
+``GH_ACTOR``
+------------
+A GitHub account username. This is used for authenticating when pushing tags,
+publishing releases etc. See :ref:`automatic-github` for usage.
+
 .. _env-gl_token:
 
 ``GL_TOKEN``

@@ -10,6 +10,9 @@ inputs:
   github_token:
     description: 'GitHub token used to push release notes and new commits/tags'
     required: true
+  github_actor:
+    description: 'GitHub actor used to push release notes and new commits/tags'
+    required: false
   pypi_token:
     description: 'PyPI API token'
     required: false

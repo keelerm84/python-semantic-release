@@ -230,7 +230,7 @@ def push_new_version(
         token = auth_token
         if config.get("hvcs") == "gitlab":
             token = "gitlab-ci-token:" + token
-        actor = os.environ.get("GITHUB_ACTOR")
+        actor = os.environ.get("GH_ACTOR")
         if actor:
             server = "https://{actor}:{token}@{server_url}/{owner}/{name}.git".format(
                 token=token, server_url=domain, owner=owner, name=name, actor=actor

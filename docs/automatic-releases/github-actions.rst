@@ -12,6 +12,8 @@ Inputs
 +====================+========================================================================================+
 | ``github_token``   | See :ref:`env-gh_token`. this is usually set to ``${{ secrets.GITHUB_TOKEN }}``.       |
 +--------------------+----------------------------------------------------------------------------------------+
+| ``github_actor``   | See :ref:`env-gh_actor`. this is usually set to ``${{ secrets.GITHUB_ACTOR }}``.       |
++--------------------+----------------------------------------------------------------------------------------+
 | ``pypi_token``     | See :ref:`env-pypi_token`.                                                             |
 +--------------------+----------------------------------------------------------------------------------------+
 | ``pypi_username``  | See :ref:`env-pypi_username`.                                                          |
@@ -48,6 +50,7 @@ Example Workflow
          uses: relekang/python-semantic-release@master
          with:
            github_token: ${{ secrets.GITHUB_TOKEN }}
+           github_actor: ${{ secrets.GITHUB_ACTOR }}
            pypi_token: ${{ secrets.PYPI_TOKEN }}
 
 :ref:`env-pypi_token` should be set as a secret on your repository's settings page.
@@ -60,13 +63,20 @@ fashion.
   a release should be made.
 
 .. warning::
-  The ``GITHUB_TOKEN`` secret is automatically configured by GitHub, with the
-  same permissions as the user who triggered the workflow run. This can
-  sometimes cause a problem if your default branch is protected, since only
-  administrators will be able to push to it without creating a pull request.
+  The ``GITHUB_TOKEN`` secret is automatically configured by GitHub, with
+  similar permissions as the user who triggered the workflow run. This can
+  sometimes cause a problem if your default branch is protected as the default
+  ``GITHUB_TOKEN`` cannot operate on protected branches.
 
-  You can work around this by a user with the necessary permissions creating a
-  Personal Access Token, and storing that in a different secret.
+  You can work around this by creating a Personal Access Token, and storing
+  that in a different secret.
+
+.. warning::
+   The ``GITHUB_ACTOR`` secret is automatically configured by GitHub and
+   matches the user that triggered the workflow action. If you override the
+   default ``GITHUB_TOKEN`` as mentioned above, you may also need to override
+   the ``GITHUB_ACTOR`` variable to the username that matches the token
+   generated.
 
 Multiple Projects
 -----------------
